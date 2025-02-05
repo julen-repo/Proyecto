@@ -21,3 +21,19 @@ CREATE TABLE MesaAlquilada (
     FOREIGN KEY (id_Usuario) REFERENCES Usuario(id) ON DELETE SET NULL,
     FOREIGN KEY (id_Mesa) REFERENCES Mesa(id) ON DELETE SET NULL
 );
+
+-- Insertar usuarios
+INSERT INTO Usuario (nombre) VALUES ('Carlos Fernández'), ('María López'), ('Luis García'), ('Sofía Martínez'), ('Javier Gómez');
+
+-- Insertar mesas
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa () VALUES ();
+
