@@ -1,5 +1,6 @@
 DROP DATABASE IF EXISTS AlquilaMesas;
 CREATE DATABASE AlquilaMesas;
+USE AlquilaMesas;
 
 CREATE TABLE Usuario(
     id INT AUTO_INCREMENT PRIMARY KEY,
