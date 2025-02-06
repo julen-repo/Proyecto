@@ -1,28 +1,25 @@
-<div>
-  <h1>Administración de artículos</h1>
-    <table border="1">
-      <tr>
-        <td>Codigo</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
-      </tr>
-      @for(art of articulos;track art.codigo) {
-      <tr>
-        <td>{{art.codigo}}</td>
-        <td>{{art.descripcion}}</td>
-        <td>{{art.precio}}</td>
-        <td><button (click)="baja(art.codigo)">Borrar?</button></td>
-        <td><button (click)="seleccionar(art.codigo)">Seleccionar</button></td>
-      </tr>
-    }
-    </table>
-    <div>
-      <p>
-        descripcion:<input type="text" [(ngModel)]="art.descripcion" />
-      </p>
-      <p>
-        precio:<input type="number" [(ngModel)]="art.precio" />
-      </p>
-      <p><button (click)="alta()">Agregar</button>
-      <button (click)="modificacion()">Modificar</button></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">AlquilaMesas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mesas" routerLinkActive="active">Mesas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reservar" routerLinkActive="active">Alquiler</a>
+        </li>
+      </ul>
     </div>
-</div>
-<router-outlet />
+  </div>
+</nav>
+<router-outlet></router-outlet>
