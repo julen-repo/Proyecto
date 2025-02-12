@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticulosService {
 
-  url='http://localhost:80/php/';
+  url='http://localhost:../php/';
 
   constructor(private http: HttpClient) { }
 
