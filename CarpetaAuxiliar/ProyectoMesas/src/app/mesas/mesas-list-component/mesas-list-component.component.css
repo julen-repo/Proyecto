@@ -1,0 +1,15 @@
+/* Centrar el contenedor en blanco y la fila */
+.row-centered {
+  min-height:80vh; /* Asegura que la fila ocupe al menos toda la ventana */
+  display: flex;
+  align-items: center; /* Centrado vertical */
+}
+
+/* Contenedor blanco */
+.white-container {
+  border: 1px solid #ddd;
+  height: 500px;
+  display: flex;
+  align-items: center; /* Centrado vertical del contenido */
+  justify-content: center; /* Centrado horizontal del contenido */
+}

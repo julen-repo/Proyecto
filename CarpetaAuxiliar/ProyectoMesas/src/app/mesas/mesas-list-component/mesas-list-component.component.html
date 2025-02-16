@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row row-centered">
+    <!-- Tabla de Mesas -->
+    <div class="col-md-6 col-12">
+      <h2>Lista de Mesas</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (mesa of mesas; track mesa.id){
+            <tr>
+              <td>{{ mesa.id }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Contenedor en blanco centrado -->
+    <div class="col-md-6 col-12 white-container">
+      <p>Zona en blanco</p>
+    </div>
+  </div>
+</div>
