@@ -8,12 +8,14 @@
           <thead class="table-dark">
             <tr>
               <th>ID</th>
+              <th>Tamaño</th>
             </tr>
           </thead>
           <tbody>
             @for (mesa of mesas; track mesa.id){
             <tr>
               <td>{{ mesa.id }}</td>
+              <td>{{ mesa.tamano }}</td>
             </tr>
             }
           </tbody>
@@ -22,8 +24,8 @@
     </div>
 
     <!-- Contenedor en blanco centrado -->
-    <div class="col-md-6 col-12 white-container">
-      <p>Zona en blanco</p>
+    <div class="col-md-6 col-12 component-container">
+      <app-mesas-form idMesa=idSeleccionado (mesaActualizada)="getMesas()"></app-mesas-form> <router-outlet />
     </div>
   </div>
 </div>

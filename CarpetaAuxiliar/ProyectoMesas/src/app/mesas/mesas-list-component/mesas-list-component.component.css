@@ -6,7 +6,7 @@
 }
 
 /* Contenedor blanco */
-.white-container {
+.component-container {
   border: 1px solid #ddd;
   height: 500px;
   display: flex;

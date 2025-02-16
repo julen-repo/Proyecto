@@ -1,41 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MesasService } from '../mesas-service.service';
+import { FormsModule } from '@angular/forms';
+import { Mesa } from '../mesa';
 
 @Component({
   selector: 'app-mesas-form',
-  templateUrl: './mesas-form.component.html',
-  styleUrls: ['./mesas-form.component.css']
+  imports: [FormsModule],
+  templateUrl: './mesas-form-component.component.html',
+  styleUrls: ['./mesas-form-component.component.css']
 })
-export class MesasFormComponent implements OnInit {
-  mesaForm: FormGroup;
-  isEditMode = false;
+export class MesasFormComponent {
+  @Input() mesaSeleccionadaId: number = 0;
+  @Output() mesaActualizada = new EventEmitter<void>();
+  
+  tamano: number = 0;
 
-  constructor(private fb: FormBuilder, private mesasService: MesasService) {
-    this.mesaForm = this.fb.group({
-      id: ['', Validators.required],
+  mesa: Mesa = {
+    id: 0,
+    tamano: 0
+  };
+
+  constructor(private mesasService: MesasService) { }
+
+  ngOnInit(): void {
+    if (this.mesaSeleccionadaId > 0) {
+      this.obtenerMesa(this.mesaSeleccionadaId);
+    }
+  }
+
+  obtenerMesa(id: number): void {
+    this.mesasService.getMesa(id).subscribe((data: any) => {
+      this.mesa = data;
     });
   }
 
-  ngOnInit(): void {
+  enviarFormulario(): void {
+    this.mesa.tamano = this.tamano;
+    if (!this.validarTamano(this.mesa.tamano)) return;
 
-    if (this.isEditMode) {
-      // Lógica para cargar datos de la mesa y rellenar el formulario
+    if (this.mesaSeleccionadaId > 0) {
+      this.mesasService.updateMesa(this.mesa).subscribe((data: any) => {
+        if (data['resultado'] == 'OK') {
+          alert(data['mensaje']);
+        }
+      });
+
+    } else {
+      this.mesasService.createMesa(this.mesa).subscribe({
+        next: (data: any) => {
+          console.log('Respuesta del servidor:', data);
+          if (data.resultado === 'OK') {
+            alert(data.mensaje);
+          }
+        },
+        error: (error) => {
+          console.error('Error en la petición:', error);
+        }
+      });
     }
+    this.mesaActualizada.emit();
   }
 
-  onSubmit(): void {
-    if (this.mesaForm.valid) {
-      const formData = this.mesaForm.value;
-      if (this.isEditMode) {
-        this.mesasService.updateMesa(formData.id).subscribe((response: any) => {
-          console.log('Mesa actualizada', response);
-        });
-      } else {
-        this.mesasService.createMesa(formData.id).subscribe((response: any) => {
-          console.log('Mesa creada', response);
-        });
-      }
-    }
+  validarTamano(tamano: any): boolean {
+    return Number.isInteger(tamano) && tamano > 0;
   }
 }

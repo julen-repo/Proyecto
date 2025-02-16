@@ -1,20 +1,22 @@
 <?php
-include 'conexion.php';
+require 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario
-    $id = $_POST['id'];
+header('Content-Type: application/json');
 
-    // Actualizar mesa en la base de datos
-    $query = "UPDATE Mesa SET id = ? WHERE id = ?";
-    if ($stmt = $conn->prepare($query)) {
-        $stmt->bind_param("ii", $id, $id);
-        if ($stmt->execute()) {
-            echo json_encode(["message" => "Mesa actualizada exitosamente"]);
-        } else {
-            echo json_encode(["message" => "Error al actualizar mesa"]);
-        }
-    }
-    $conn->close();
-}
-?>
+$json = file_get_contents('php://input');
+
+$params = json_decode($json);
+
+
+mysqli_query($con, "update mesa set tamano='$params->tamano'
+                                          where id=$params->id");
+
+
+class Result {}
+
+$response = new Result();
+$response->resultado = 'OK';
+$response->mensaje = 'datos modificados';
+
+header('Content-Type: application/json');
+echo json_encode($response);

@@ -1,11 +1,9 @@
 <div class="container">
-    <h2>{{ isEditMode ? 'Editar Mesa' : 'Crear Mesa' }}</h2>
-    <form (ngSubmit)="onSubmit()" [formGroup]="mesaForm">
+    <h2>{{ mesaSeleccionadaId != 0 ? 'Editar Mesa' : 'Crear Mesa' }}</h2>
         <div class="form-group">
-            <label for="id">ID</label>
-            <input id="id" formControlName="id" type="text" class="form-control" [readonly]="isEditMode">
+            <label for="tamano">Tamaño</label>
+            <input id="tamano" type="number" class="form-control" min="1" [(ngModel)]="tamano">
         </div>
         <!-- Aquí puedes agregar más campos si fuera necesario -->
-        <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
-    </form>
+        <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">{{ mesaSeleccionadaId != 0 ? 'Actualizar' : 'Crear' }}</button>
 </div>

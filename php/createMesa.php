@@ -1,20 +1,26 @@
 <?php
-include 'conexion.php';
+require 'conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario
-    $id = $_POST['id'];
+$json = file_get_contents('php://input');
 
-    // Insertar mesa en la base de datos
-    $query = "INSERT INTO Mesa (id) VALUES (?)";
-    if ($stmt = $conn->prepare($query)) {
-        $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
-            echo json_encode(["message" => "Mesa creada exitosamente"]);
-        } else {
-            echo json_encode(["message" => "Error al crear mesa"]);
-        }
-    }
-    $conn->close();
+$params = json_decode($json);
+
+$stmt = mysqli_prepare($conn, "INSERT INTO mesa (tamano) VALUES (?)");
+mysqli_stmt_bind_param($stmt, "i", $params->tamano);
+
+class Result {}
+
+$response = new Result();
+
+if (mysqli_stmt_execute($stmt)) {
+    $response->resultado = 'OK';
+    $response->mensaje = 'Datos grabados';
+} else {
+    $response->resultado = 'ERROR';
+    $response->mensaje = 'Error al insertar en la base de datos';
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);
+
 ?>

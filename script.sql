@@ -43,4 +43,3 @@ INSERT INTO Mesa (tamano) VALUES
 (6),
 (8),
 (10);
-
