@@ -30,4 +30,5 @@ export class MesasListComponent {
       this.mesas = datos;
     });
   }
+  
 }

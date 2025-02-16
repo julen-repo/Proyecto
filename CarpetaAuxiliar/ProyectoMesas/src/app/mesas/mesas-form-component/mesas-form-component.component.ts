@@ -11,7 +11,7 @@ import { Mesa } from '../mesa';
 })
 export class MesasFormComponent {
   @Input() mesaSeleccionadaId: number = 0;
-  @Output() mesaActualizada = new EventEmitter<void>();
+  @Output() mesaActualizada = new EventEmitter();
   
   tamano: number = 0;
 
@@ -42,15 +42,16 @@ export class MesasFormComponent {
       this.mesasService.updateMesa(this.mesa).subscribe((data: any) => {
         if (data['resultado'] == 'OK') {
           alert(data['mensaje']);
+          window.location.reload();
         }
       });
 
     } else {
       this.mesasService.createMesa(this.mesa).subscribe({
         next: (data: any) => {
-          console.log('Respuesta del servidor:', data);
           if (data.resultado === 'OK') {
             alert(data.mensaje);
+            window.location.reload();
           }
         },
         error: (error) => {
@@ -58,7 +59,6 @@ export class MesasFormComponent {
         }
       });
     }
-    this.mesaActualizada.emit();
   }
 
   validarTamano(tamano: any): boolean {
