@@ -12,7 +12,8 @@ CREATE TABLE Usuario(
 );
 
 CREATE TABLE Mesa(
-	id INT AUTO_INCREMENT PRIMARY KEY
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    tamano INT
 );
 
 CREATE TABLE MesaAlquilada (
@@ -36,13 +37,10 @@ VALUES
 ('Javier', 'Gómez Fernández', '32198765E', 612345678);
 
 -- Insertar mesas
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
-INSERT INTO Mesa () VALUES ();
+INSERT INTO Mesa (tamano) VALUES 
+(2),
+(4),
+(6),
+(8),
+(10);
+
