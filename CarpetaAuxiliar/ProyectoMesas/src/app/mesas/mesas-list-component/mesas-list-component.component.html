@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row row-centered" (click)="seleccionarMesa(0)">
+  <div class="row row-centered" (click)="seleccionarMesa(0,0)">
     <!-- Tabla de Mesas -->
     <div class="col-md-6 col-12">
       <h2>Lista de Mesas</h2>
@@ -13,7 +13,7 @@
           </thead>
           <tbody>
             @for (mesa of mesas; track mesa.id){
-            <tr (click)="seleccionarMesa(mesa.id); $event.stopPropagation()">
+            <tr (click)="seleccionarMesa(mesa.id,mesa.tamano); $event.stopPropagation()">
               <td>{{ mesa.id }}</td>
               <td>{{ mesa.tamano }}</td>
             </tr>
@@ -25,7 +25,7 @@
 
     <!-- Contenedor en blanco centrado -->
     <div class="col-md-6 col-12 component-container" (click)="$event.stopPropagation()">
-      <app-mesas-form [mesaSeleccionadaId]="idSeleccionado"></app-mesas-form> <router-outlet />
+      <app-mesas-form  [mesaSeleccionadaId]="idSeleccionado" [mesaSeleccionadaTamano]="tamanoSeleccionado"></app-mesas-form> <router-outlet />
     </div>
   </div>
 </div>

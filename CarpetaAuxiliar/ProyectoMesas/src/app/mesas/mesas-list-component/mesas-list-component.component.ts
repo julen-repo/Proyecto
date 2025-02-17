@@ -17,6 +17,7 @@ export class MesasListComponent {
   }
 
   idSeleccionado: number = 0;
+  tamanoSeleccionado: number = 0;
   mesas: any[] = [];
 
   constructor(private mesasService: MesasService) { }
@@ -30,9 +31,11 @@ export class MesasListComponent {
       this.mesas = datos;
     });
   }
-  seleccionarMesa(id: number) {
+  seleccionarMesa(id: number, tamano: number) {
     this.idSeleccionado = id;
+    this.tamanoSeleccionado = tamano;
     alert(this.idSeleccionado);
+    alert(this.tamanoSeleccionado);
   }
 
 }

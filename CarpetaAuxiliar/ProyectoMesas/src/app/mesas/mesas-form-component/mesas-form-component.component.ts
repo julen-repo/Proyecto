@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { MesasService } from '../mesas-service.service';
 import { FormsModule } from '@angular/forms';
 import { Mesa } from '../mesa';
@@ -11,6 +11,8 @@ import { Mesa } from '../mesa';
 })
 export class MesasFormComponent {
   @Input() mesaSeleccionadaId: number = 0;
+  @Input() mesaSeleccionadaTamano: number = 0;
+  
   @Output() mesaActualizada = new EventEmitter();
   
   tamano: number = 0;
@@ -25,6 +27,11 @@ export class MesasFormComponent {
   ngOnInit(): void {
     if (this.mesaSeleccionadaId > 0) {
       this.obtenerMesa(this.mesaSeleccionadaId);
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['mesaSeleccionadaTamano']) {
+      this.tamano = this.mesaSeleccionadaTamano || 0; // Asigna el nuevo tamaño si cambia
     }
   }
 
