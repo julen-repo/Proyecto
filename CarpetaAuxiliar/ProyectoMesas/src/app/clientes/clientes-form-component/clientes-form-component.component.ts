@@ -10,7 +10,7 @@ import { Cliente } from '../cliente';
   styleUrls: ['./clientes-form-component.component.css']
 })
 export class ClientesFormComponent {
-  @Input() clientesSeleccionada: Cliente = {
+  @Input() clienteSeleccionado: Cliente = {
     id: 0,
     nombre: '',
     apellidos: '',
@@ -28,24 +28,24 @@ export class ClientesFormComponent {
   constructor(private clientesService: ClientesService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['clientesSeleccionada'] && changes['clientesSeleccionada'].currentValue) {
-      this.nombre = this.clientesSeleccionada.nombre || '';
-      this.apellidos = this.clientesSeleccionada.apellidos || '';
-      this.dni = this.clientesSeleccionada.dni || '';
-      this.telefono = this.clientesSeleccionada.telefono || 0;
+    if (changes['clienteSeleccionado'] && changes['clienteSeleccionado'].currentValue) {
+      this.nombre = this.clienteSeleccionado.nombre || '';
+      this.apellidos = this.clienteSeleccionado.apellidos || '';
+      this.dni = this.clienteSeleccionado.dni || '';
+      this.telefono = this.clienteSeleccionado.telefono || 0;
     }
   }
 
   enviarFormulario(): void {
-    this.clientesSeleccionada.nombre = this.nombre;
-    this.clientesSeleccionada.apellidos = this.apellidos;
-    this.clientesSeleccionada.dni = this.dni;
-    this.clientesSeleccionada.telefono = this.telefono;
+    this.clienteSeleccionado.nombre = this.nombre;
+    this.clienteSeleccionado.apellidos = this.apellidos;
+    this.clienteSeleccionado.dni = this.dni;
+    this.clienteSeleccionado.telefono = this.telefono;
     
     if (!this.validarDatos()) return;
 
-    if (this.clientesSeleccionada.id > 0) {
-      this.clientesService.updateCliente(this.clientesSeleccionada).subscribe({
+    if (this.clienteSeleccionado.id > 0) {
+      this.clientesService.updateCliente(this.clienteSeleccionado).subscribe({
         next: (data: any) => {
           if (data.resultado === 'OK') {
             alert(data.mensaje);
@@ -57,7 +57,7 @@ export class ClientesFormComponent {
         }
       });
     } else {
-      this.clientesService.createCliente(this.clientesSeleccionada).subscribe({
+      this.clientesService.createCliente(this.clienteSeleccionado).subscribe({
         next: (data: any) => {
           if (data.resultado === 'OK') {
             alert(data.mensaje);
@@ -77,7 +77,7 @@ export class ClientesFormComponent {
   }
 
   borrarCliente(): void {
-    this.clientesService.deleteCliente(this.clientesSeleccionada).subscribe({
+    this.clientesService.deleteCliente(this.clienteSeleccionado).subscribe({
       next: (data: any) => {
         if (data.resultado === 'OK') {
           alert(data.mensaje);
