@@ -8,7 +8,7 @@ $json = file_get_contents('php://input');
 $params = json_decode($json);
 
 
-mysqli_query($con, "update mesa set tamano='$params->tamano'
+mysqli_query($conn, "update mesa set tamano='$params->tamano'
                                           where id=$params->id");
 
 

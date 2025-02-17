@@ -38,8 +38,6 @@ export class MesasListComponent {
   
   seleccionarMesa(id: number, tamano: number) {
     this.mesaSeleccionada = { id, tamano }; // Pasar una copia
-
-    alert(this.mesaSeleccionada.id + ' ' +  this.mesaSeleccionada.tamano)
   }
 
 }

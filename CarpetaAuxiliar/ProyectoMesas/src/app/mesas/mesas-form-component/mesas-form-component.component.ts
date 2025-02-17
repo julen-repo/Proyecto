@@ -19,10 +19,6 @@ export class MesasFormComponent {
   
   tamano: number = 0;
 
-  mesa: Mesa = {
-    id: 0,
-    tamano: 0
-  };
 
   constructor(private mesasService: MesasService) { }
 
@@ -32,28 +28,27 @@ export class MesasFormComponent {
     }
   }
 
-  obtenerMesa(id: number): void {
-    this.mesasService.getMesa(id).subscribe((data: any) => {
-      this.mesa = data;
-    });
-  }
-
   enviarFormulario(): void {
-    this.mesa.tamano = this.tamano;
-    if (!this.validarTamano(this.mesa.tamano)) return;
+    this.mesaSeleccionada.tamano = this.tamano;
+    if (!this.validarTamano(this.mesaSeleccionada.tamano)) return;
 
     if (this.mesaSeleccionada.id > 0) {
-      this.mesa.id=this.mesaSeleccionada.id;
-      console.log(this.mesa);
-      this.mesasService.updateMesa(this.mesa).subscribe((data: any) => {
-        if (data['resultado'] == 'OK') {
-          alert(data['mensaje']);
-          window.location.reload();
+      this.mesaSeleccionada.id=this.mesaSeleccionada.id;
+
+      this.mesasService.updateMesa(this.mesaSeleccionada).subscribe({
+        next: (data: any) => {
+          if (data.resultado === 'OK') {
+            alert(data.mensaje);
+            window.location.reload();
+          }
+        },
+        error: (error) => {
+          console.error('Error en la petición:', error);
         }
       });
 
     } else {
-      this.mesasService.createMesa(this.mesa).subscribe({
+      this.mesasService.createMesa(this.mesaSeleccionada).subscribe({
         next: (data: any) => {
           if (data.resultado === 'OK') {
             alert(data.mensaje);
