@@ -10,8 +10,10 @@ import { Mesa } from '../mesa';
   styleUrls: ['./mesas-form-component.component.css']
 })
 export class MesasFormComponent {
-  @Input() mesaSeleccionadaId: number = 0;
-  @Input() mesaSeleccionadaTamano: number = 0;
+  @Input() mesaSeleccionada: Mesa = {
+    id: 0,
+    tamano: 0
+  };
   
   @Output() mesaActualizada = new EventEmitter();
   
@@ -24,14 +26,9 @@ export class MesasFormComponent {
 
   constructor(private mesasService: MesasService) { }
 
-  ngOnInit(): void {
-    if (this.mesaSeleccionadaId > 0) {
-      this.obtenerMesa(this.mesaSeleccionadaId);
-    }
-  }
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['mesaSeleccionadaTamano']) {
-      this.tamano = this.mesaSeleccionadaTamano || 0; // Asigna el nuevo tamaño si cambia
+    if (changes['mesaSeleccionada'] && changes['mesaSeleccionada'].currentValue) {
+      this.tamano = this.mesaSeleccionada.tamano || 0; // Asigna el nuevo tamaño si cambia
     }
   }
 
@@ -45,8 +42,8 @@ export class MesasFormComponent {
     this.mesa.tamano = this.tamano;
     if (!this.validarTamano(this.mesa.tamano)) return;
 
-    if (this.mesaSeleccionadaId > 0) {
-      this.mesa.id=this.mesaSeleccionadaId;
+    if (this.mesaSeleccionada.id > 0) {
+      this.mesa.id=this.mesaSeleccionada.id;
       console.log(this.mesa);
       this.mesasService.updateMesa(this.mesa).subscribe((data: any) => {
         if (data['resultado'] == 'OK') {

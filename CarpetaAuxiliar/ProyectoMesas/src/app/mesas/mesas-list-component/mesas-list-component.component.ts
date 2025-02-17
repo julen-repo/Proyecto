@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MesasFormComponent } from '../mesas-form-component/mesas-form-component.component';
 import { MesasService } from '../mesas-service.service';
 import { RouterOutlet } from '@angular/router';
+import { Mesa } from '../mesa';
 
 @Component({
   selector: 'app-mesas-list',
@@ -16,8 +17,11 @@ export class MesasListComponent {
     tamano: 0
   }
 
-  idSeleccionado: number = 0;
-  tamanoSeleccionado: number = 0;
+  mesaSeleccionada: Mesa = {
+    id: 0,
+    tamano: 0
+  }
+
   mesas: any[] = [];
 
   constructor(private mesasService: MesasService) { }
@@ -31,11 +35,11 @@ export class MesasListComponent {
       this.mesas = datos;
     });
   }
+  
   seleccionarMesa(id: number, tamano: number) {
-    this.idSeleccionado = id;
-    this.tamanoSeleccionado = tamano;
-    alert(this.idSeleccionado);
-    alert(this.tamanoSeleccionado);
+    this.mesaSeleccionada = { id, tamano }; // Pasar una copia
+
+    alert(this.mesaSeleccionada.id + ' ' +  this.mesaSeleccionada.tamano)
   }
 
 }
