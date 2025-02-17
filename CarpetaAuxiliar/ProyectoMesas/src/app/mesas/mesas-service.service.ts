@@ -27,6 +27,7 @@ export class MesasService {
 
   // Actualizar una mesa
   updateMesa(mesa:Mesa) {
+    console.log(JSON.stringify(mesa))
     return this.http.post(`${this.apiUrl}updateMesa.php`, JSON.stringify(mesa));
   }
 

@@ -14,7 +14,7 @@ class Result {}
 
 $response = new Result();
 $response->resultado = 'OK';
-$response->mensaje = 'mesa ' . $params->id . ' eliminada';
+$response->mensaje = 'Reserva ' . $params->id . ' eliminada';
 
 header('Content-Type: application/json');
 echo json_encode($response);

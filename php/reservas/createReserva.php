@@ -10,7 +10,7 @@ $inicio = DateTime::createFromFormat('Y-m-d\TH:i', $params->inicio)->format('Y-m
 $fin = DateTime::createFromFormat('Y-m-d\TH:i', $params->fin)->format('Y-m-d H:i:s');
 
 
-$stmt = mysqli_prepare($conn, "INSERT INTO reserva (id_Usuario, id_Mesa, inicio, fin, juego) VALUES (?, ?, ?, ?, ?)");
+$stmt = mysqli_prepare($conn, "INSERT INTO reserva (idUsuario, idMesa, inicio, fin, juego) VALUES (?, ?, ?, ?, ?)");
 mysqli_stmt_bind_param($stmt, "iisss", $params->idUsuario, $params->idMesa, $inicio, $fin, $params->juego);
 
 class Result {}

@@ -12,8 +12,8 @@ $inicio = DateTime::createFromFormat('Y-m-d\TH:i', $params->inicio)->format('Y-m
 $fin = DateTime::createFromFormat('Y-m-d\TH:i', $params->fin)->format('Y-m-d H:i:s');
 
 mysqli_query($conn, "UPDATE reserva SET 
-                          id_Usuario = '$params->idUsuario', 
-                          id_Mesa = '$params->idMesa', 
+                          idUsuario = '$params->idUsuario', 
+                          idMesa = '$params->idMesa', 
                           inicio = '$inicio', 
                           fin = '$fin', 
                           juego = '$params->juego' 

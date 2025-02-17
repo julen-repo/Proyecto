@@ -18,13 +18,13 @@ CREATE TABLE Mesa(
 
 CREATE TABLE Reserva (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    id_Usuario INT,
-    id_Mesa INT,
+    idUsuario INT,
+    idMesa INT,
     inicio DATETIME,
     fin DATETIME,
     juego VARCHAR (255),
-    FOREIGN KEY (id_Usuario) REFERENCES Usuario(id) ON DELETE SET NULL,
-    FOREIGN KEY (id_Mesa) REFERENCES Mesa(id) ON DELETE SET NULL
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(id) ON DELETE SET NULL,
+    FOREIGN KEY (idMesa) REFERENCES Mesa(id) ON DELETE SET NULL
 );
 
 -- Insertar usuarios con nuevos atributos
