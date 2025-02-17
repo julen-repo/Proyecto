@@ -1,1 +1,43 @@
-<p>clientes-form-component works!</p>
+<div class="container mt-4">
+    <h2 class="mb-4">{{ clientesSeleccionada.id != 0 ? 'Editar Cliente' : 'Crear Cliente' }}
+        @if (clientesSeleccionada.id != 0){
+        <span> ID: {{clientesSeleccionada.id}}</span>
+        }
+    </h2>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input id="nombre" type="text" class="form-control"  [(ngModel)]="nombre"
+                placeholder="Introduce el Nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input id="apellidos" type="text" class="form-control"  [(ngModel)]="apellidos"
+                placeholder="Introduce los Apellidos">
+        </div>
+        <div class="form-group">
+            <label for="dni" class="form-label">DNI</label>
+            <input id="dni" type="text" class="form-control"  [(ngModel)]="dni"
+                placeholder="Introduce el DNI">
+        </div>
+        <div class="form-group">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input id="telefono" type="number" class="form-control" min="9" [(ngModel)]="telefono"
+                placeholder="Introduce el Telefono">
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="mt-3 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">
+                {{ clientesSeleccionada.id != 0 ? 'Actualizar' : 'Crear' }}
+            </button>
+
+            @if (clientesSeleccionada.id != 0){
+            <button class="btn btn-danger" (click)="borrarCliente()">
+                Borrar
+            </button>
+            }
+        </div>
+    </div>
+</div>
