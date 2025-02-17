@@ -1,1 +1,48 @@
-<p>reservas-list-component works!</p>
+<div class="container-fluid">
+    <div class="row row-centered" (click)="seleccionarReserva(0)">
+      <!-- Tabla de Reservas -->
+      <div class="col-md-6 col-12">
+        <h2>Lista de Reservas</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Mesa</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Juego</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(reserva of reservasPaginas; track reserva.id) {
+                <tr (click)="seleccionarReserva(reserva.id); $event.stopPropagation()">
+                  <td>{{ reserva.id }}</td>
+                  <td>{{ reserva.idUsuario }}</td>
+                  <td>{{ reserva.idMesa }}</td>
+                  <td>{{ reserva.inicio}}</td>
+                  <td>{{ reserva.fin}}</td>
+                  <td>{{ reserva.juego }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Paginación -->
+        <div class="d-flex justify-content-center mt-3">
+          <button class="btn btn-primary me-2" (click)="cambiarPagina(-1)" [disabled]="paginaActual == 0">Anterior</button>
+          <span>Página {{ paginaActual + 1 }}</span>
+          <button class="btn btn-primary ms-2" (click)="cambiarPagina(1)" [disabled]="paginaActual == paginasTotales - 1">Siguiente</button>
+        </div>
+      </div>
+  
+      <!-- Contenedor en blanco centrado -->
+      <div class="col-md-6 col-12 component-container" (click)="$event.stopPropagation()">
+        <app-reservas-form [reservaSeleccionada]="reservaSeleccionada"></app-reservas-form>
+        <router-outlet />
+      </div>
+    </div>
+  </div>
+  
