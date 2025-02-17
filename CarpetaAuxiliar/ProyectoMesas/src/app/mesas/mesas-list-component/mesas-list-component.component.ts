@@ -24,6 +24,11 @@ export class MesasListComponent {
 
   mesas: any[] = [];
 
+  mesasPaginas: any[] = [];
+  paginaActual: number = 0;
+  paginasTotales: number = 0;
+  elementosPorPagina: number = 10;
+
   constructor(private mesasService: MesasService) { }
 
   ngOnInit(): void {
@@ -33,11 +38,25 @@ export class MesasListComponent {
   getMesas() {
     this.mesasService.getMesas().subscribe((datos: any) => {
       this.mesas = datos;
+      this.paginasTotales = Math.ceil(this.mesas.length / this.elementosPorPagina);
+      this.actualizarPaginas();
+      alert(this.mesas.length)
     });
   }
   
   seleccionarMesa(id: number, tamano: number) {
     this.mesaSeleccionada = { id, tamano }; // Pasar una copia
+  }
+
+  cambiarPagina(cambio: number) {
+    this.paginaActual += cambio;
+    this.actualizarPaginas();
+  }
+
+  actualizarPaginas() {
+    const inicio = this.paginaActual * this.elementosPorPagina;
+    const fin = inicio + this.elementosPorPagina;
+    this.mesasPaginas = this.mesas.slice(inicio, fin);
   }
 
 }

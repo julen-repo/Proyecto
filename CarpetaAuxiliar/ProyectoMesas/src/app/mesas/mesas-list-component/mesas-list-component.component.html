@@ -12,20 +12,28 @@
             </tr>
           </thead>
           <tbody>
-            @for (mesa of mesas; track mesa.id){
-            <tr (click)="seleccionarMesa(mesa.id,mesa.tamano); $event.stopPropagation()">
-              <td>{{ mesa.id }}</td>
-              <td>{{ mesa.tamano }}</td>
-            </tr>
+            @for(mesa of mesasPaginas; track mesa.id) {
+              <tr (click)="seleccionarMesa(mesa.id,mesa.tamano); $event.stopPropagation()">
+                <td>{{ mesa.id }}</td>
+                <td>{{ mesa.tamano }}</td>
+              </tr>
             }
           </tbody>
         </table>
+      </div>
+
+      <!-- Paginación -->
+      <div class="d-flex justify-content-center mt-3">
+        <button class="btn btn-primary me-2" (click)="cambiarPagina(-1)" [disabled]="paginaActual == 0">Anterior</button>
+        <span>Página {{ paginaActual + 1 }}</span>
+        <button class="btn btn-primary ms-2" (click)="cambiarPagina(1)" [disabled]="paginaActual == paginasTotales - 1">Siguiente</button>
       </div>
     </div>
 
     <!-- Contenedor en blanco centrado -->
     <div class="col-md-6 col-12 component-container" (click)="$event.stopPropagation()">
-      <app-mesas-form  [mesaSeleccionada]="mesaSeleccionada"></app-mesas-form> <router-outlet />
+      <app-mesas-form [mesaSeleccionada]="mesaSeleccionada"></app-mesas-form>
+      <router-outlet />
     </div>
   </div>
 </div>
