@@ -9,33 +9,33 @@
         <!-- Campo para el ID del Usuario -->
         <div class="form-group col-md-6">
             <label for="idUsuario" class="form-label">ID del Usuario</label>
-            <input id="idUsuario" type="number" class="form-control" min="1" [(ngModel)]="reserva.idUsuario"
+            <input id="idUsuario" type="number" class="form-control" min="1" [(ngModel)]="idUsuario"
                 placeholder="Introduce el ID del usuario">
         </div>
 
         <!-- Campo para el ID de la Mesa -->
         <div class="form-group col-md-6">
             <label for="idMesa" class="form-label">ID de la Mesa</label>
-            <input id="idMesa" type="number" class="form-control" min="1" [(ngModel)]="reserva.idMesa"
+            <input id="idMesa" type="number" class="form-control" min="1" [(ngModel)]="idMesa"
                 placeholder="Introduce el ID de la mesa">
         </div>
 
         <!-- Campo para la Fecha y Hora de Inicio -->
         <div class="form-group col-md-6">
             <label for="inicio" class="form-label">Fecha y Hora de Inicio</label>
-            <input id="inicio" type="datetime-local" class="form-control" [(ngModel)]="reserva.inicio">
+            <input id="inicio" type="datetime-local" class="form-control" [(ngModel)]="inicio">
         </div>
 
         <!-- Campo para la Fecha y Hora de Fin -->
         <div class="form-group col-md-6">
             <label for="fin" class="form-label">Fecha y Hora de Fin</label>
-            <input id="fin" type="datetime-local" class="form-control" [(ngModel)]="reserva.fin">
+            <input id="fin" type="datetime-local" class="form-control" [(ngModel)]="fin">
         </div>
 
         <!-- Campo para el Nombre del Juego -->
         <div class="form-group col-md-6">
             <label for="juego" class="form-label">Juego</label>
-            <input id="juego" type="text" class="form-control" [(ngModel)]="reserva.juego" placeholder="Introduce el nombre del juego">
+            <input id="juego" type="text" class="form-control" [(ngModel)]="juego" placeholder="Introduce el nombre del juego">
         </div>
 
         <!-- Botones de acción -->

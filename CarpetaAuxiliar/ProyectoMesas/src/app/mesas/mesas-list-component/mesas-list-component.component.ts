@@ -40,7 +40,6 @@ export class MesasListComponent {
       this.mesas = datos;
       this.paginasTotales = Math.ceil(this.mesas.length / this.elementosPorPagina);
       this.actualizarPaginas();
-      alert(this.mesas.length)
     });
   }
   

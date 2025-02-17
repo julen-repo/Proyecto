@@ -6,7 +6,7 @@ import { Mesa } from './mesa';
   providedIn: 'root'
 })
 export class MesasService {
-  private apiUrl = 'http://localhost/php/'; // Cambia la URL según corresponda
+  private apiUrl = 'http://localhost/php/mesas/'; // Cambia la URL según corresponda
 
   constructor(private http: HttpClient) {}
 

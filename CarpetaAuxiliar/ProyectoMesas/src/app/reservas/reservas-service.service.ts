@@ -6,7 +6,7 @@ import { Reserva } from './reserva';
   providedIn: 'root'
 })
 export class ReservasService {
-  private apiUrl = 'http://localhost/php/'; // Cambia la URL según corresponda
+  private apiUrl = 'http://localhost/php/reservas/'; // Cambia la URL según corresponda
 
   constructor(private http: HttpClient) {}
 

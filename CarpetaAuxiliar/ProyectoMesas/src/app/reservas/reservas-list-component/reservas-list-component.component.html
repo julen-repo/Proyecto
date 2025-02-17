@@ -19,10 +19,10 @@
               @for(reserva of reservasPaginas; track reserva.id) {
                 <tr (click)="seleccionarReserva(reserva.id); $event.stopPropagation()">
                   <td>{{ reserva.id }}</td>
-                  <td>{{ reserva.id_Usuario }}</td>
-                  <td>{{ reserva.id_Mesa }}</td>
-                  <td>{{ reserva.inicio | date:'short' }}</td>
-                  <td>{{ reserva.fin | date:'short' }}</td>
+                  <td>{{ reserva.idUsuario }}</td>
+                  <td>{{ reserva.idMesa }}</td>
+                  <td>{{ reserva.inicio}}</td>
+                  <td>{{ reserva.fin}}</td>
                   <td>{{ reserva.juego }}</td>
                 </tr>
               }
