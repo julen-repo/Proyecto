@@ -19,16 +19,20 @@ export class MesasListComponent {
   idSeleccionado: number = 0;
   mesas: any[] = [];
 
-  constructor(private mesasService: MesasService) {}
+  constructor(private mesasService: MesasService) { }
 
   ngOnInit(): void {
     this.getMesas();
   }
 
-  getMesas(){
-    this.mesasService.getMesas().subscribe((datos:any) => {
+  getMesas() {
+    this.mesasService.getMesas().subscribe((datos: any) => {
       this.mesas = datos;
     });
   }
-  
+  seleccionarMesa(id: number) {
+    this.idSeleccionado = id;
+    alert(this.idSeleccionado);
+  }
+
 }

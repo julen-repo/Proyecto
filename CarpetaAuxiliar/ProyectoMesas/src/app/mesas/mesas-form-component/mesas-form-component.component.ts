@@ -39,6 +39,8 @@ export class MesasFormComponent {
     if (!this.validarTamano(this.mesa.tamano)) return;
 
     if (this.mesaSeleccionadaId > 0) {
+      this.mesa.id=this.mesaSeleccionadaId;
+      console.log(this.mesa);
       this.mesasService.updateMesa(this.mesa).subscribe((data: any) => {
         if (data['resultado'] == 'OK') {
           alert(data['mensaje']);

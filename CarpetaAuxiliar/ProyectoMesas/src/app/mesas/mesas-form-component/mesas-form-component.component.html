@@ -2,7 +2,7 @@
     <h2>{{ mesaSeleccionadaId != 0 ? 'Editar Mesa' : 'Crear Mesa' }}</h2>
         <div class="form-group">
             <label for="tamano">Tamaño</label>
-            <input id="tamano" type="number" class="form-control" min="1" [(ngModel)]="tamano">
+            <input id="tamano" type="number" class="form-control" min="1" [(ngModel)]="tamano" >
         </div>
         <!-- Aquí puedes agregar más campos si fuera necesario -->
         <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">{{ mesaSeleccionadaId != 0 ? 'Actualizar' : 'Crear' }}</button>
