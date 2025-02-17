@@ -16,7 +16,7 @@ CREATE TABLE Mesa(
     tamano INT
 );
 
-CREATE TABLE MesaAlquilada (
+CREATE TABLE Reserva (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     id_Usuario INT,
     id_Mesa INT,

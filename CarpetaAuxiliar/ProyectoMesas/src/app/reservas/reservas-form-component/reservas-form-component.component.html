@@ -1,1 +1,54 @@
-<p>reservas-form-component works!</p>
+<div class="container mt-4">
+    <h2 class="mb-4">{{ reservaSeleccionada.id != 0 ? 'Editar Reserva' : 'Crear Reserva' }}
+        @if (reservaSeleccionada.id != 0){
+        <span> ID: {{reservaSeleccionada.id}}</span>
+        }
+    </h2>
+
+    <div class="row">
+        <!-- Campo para el ID del Usuario -->
+        <div class="form-group col-md-6">
+            <label for="idUsuario" class="form-label">ID del Usuario</label>
+            <input id="idUsuario" type="number" class="form-control" min="1" [(ngModel)]="reserva.idUsuario"
+                placeholder="Introduce el ID del usuario">
+        </div>
+
+        <!-- Campo para el ID de la Mesa -->
+        <div class="form-group col-md-6">
+            <label for="idMesa" class="form-label">ID de la Mesa</label>
+            <input id="idMesa" type="number" class="form-control" min="1" [(ngModel)]="reserva.idMesa"
+                placeholder="Introduce el ID de la mesa">
+        </div>
+
+        <!-- Campo para la Fecha y Hora de Inicio -->
+        <div class="form-group col-md-6">
+            <label for="inicio" class="form-label">Fecha y Hora de Inicio</label>
+            <input id="inicio" type="datetime-local" class="form-control" [(ngModel)]="reserva.inicio">
+        </div>
+
+        <!-- Campo para la Fecha y Hora de Fin -->
+        <div class="form-group col-md-6">
+            <label for="fin" class="form-label">Fecha y Hora de Fin</label>
+            <input id="fin" type="datetime-local" class="form-control" [(ngModel)]="reserva.fin">
+        </div>
+
+        <!-- Campo para el Nombre del Juego -->
+        <div class="form-group col-md-6">
+            <label for="juego" class="form-label">Juego</label>
+            <input id="juego" type="text" class="form-control" [(ngModel)]="reserva.juego" placeholder="Introduce el nombre del juego">
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="mt-3 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">
+                {{ reservaSeleccionada.id != 0 ? 'Actualizar' : 'Crear' }}
+            </button>
+
+            @if (reservaSeleccionada.id != 0){
+            <button class="btn btn-danger" (click)="borrarReserva()">
+                Borrar
+            </button>
+            }
+        </div>
+    </div>
+</div>
