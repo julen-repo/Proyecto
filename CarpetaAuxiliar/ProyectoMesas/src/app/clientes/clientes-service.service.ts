@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cliente } from './clientes';
+import { Cliente } from './cliente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
-  private apiUrl = 'http://localhost/php/'; // Cambia la URL según corresponda
+  private apiUrl = 'http://localhost/php/clientes/'; // Cambia la URL según corresponda
 
   constructor(private http: HttpClient) {}
 

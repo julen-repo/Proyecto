@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { ClientesServiceService } from '../clientes-service.service';
+import { ClientesService } from '../clientes-service.service';
 import { FormsModule } from '@angular/forms';
 import { Cliente } from '../cliente';
 
@@ -25,7 +25,7 @@ export class ClientesFormComponent {
   dni: string = '';
   telefono: number = 0;
 
-  constructor(private clientesService: ClientesServiceService) { }
+  constructor(private clientesService: ClientesService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['clientesSeleccionada'] && changes['clientesSeleccionada'].currentValue) {

@@ -6,7 +6,7 @@ import { ClientesListComponent } from './clientes/clientes-list-component/client
 export const routes: Routes = [
     {
         path: '',
-        component: ReservasListComponent
+        component: MesasListComponent
     },
     {
         path: 'mesas',
