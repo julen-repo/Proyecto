@@ -10,6 +10,7 @@ import { Cliente } from '../cliente';
   styleUrls: ['./clientes-form-component.component.css']
 })
 export class ClientesFormComponent {
+  
   @Input() clienteSeleccionado: Cliente = {
     id: 0,
     nombre: '',

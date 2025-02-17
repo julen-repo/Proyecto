@@ -1,7 +1,7 @@
 <div class="container mt-4">
-    <h2 class="mb-4">{{ clientesSeleccionada.id != 0 ? 'Editar Cliente' : 'Crear Cliente' }}
-        @if (clientesSeleccionada.id != 0){
-        <span> ID: {{clientesSeleccionada.id}}</span>
+    <h2 class="mb-4">{{ clienteSeleccionado.id != 0 ? 'Editar Cliente' : 'Crear Cliente' }}
+        @if (clienteSeleccionado.id != 0){
+        <span> ID: {{clienteSeleccionado.id}}</span>
         }
     </h2>
 
@@ -30,10 +30,10 @@
         <!-- Botones de acción -->
         <div class="mt-3 d-flex justify-content-between">
             <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">
-                {{ clientesSeleccionada.id != 0 ? 'Actualizar' : 'Crear' }}
+                {{ clienteSeleccionado.id != 0 ? 'Actualizar' : 'Crear' }}
             </button>
 
-            @if (clientesSeleccionada.id != 0){
+            @if (clienteSeleccionado.id != 0){
             <button class="btn btn-danger" (click)="borrarCliente()">
                 Borrar
             </button>

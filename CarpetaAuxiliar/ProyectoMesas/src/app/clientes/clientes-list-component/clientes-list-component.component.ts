@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { Cliente } from '../cliente';
 import { ClientesService } from '../clientes-service.service';
+import { ClientesFormComponent } from '../clientes-form-component/clientes-form-component.component';
+import { RouterOutlet } from '@angular/router';
+import { Cliente } from '../cliente';
 
 @Component({
-  selector: 'app-clientes-list-component',
-  imports: [],
+  selector: 'app-clientes-list',
+  imports: [ClientesFormComponent, RouterOutlet],
   templateUrl: './clientes-list-component.component.html',
   styleUrl: './clientes-list-component.component.css'
 })
+
 export class ClientesListComponent {
 
   mesa: any = {
@@ -28,7 +31,7 @@ export class ClientesListComponent {
 
   clientes: any[] = [];
 
-  clientesPaginas: any[] = [];
+  clientePaginas: any[] = [];
   paginaActual: number = 0;
   paginasTotales: number = 0;
   elementosPorPagina: number = 10;
@@ -59,6 +62,6 @@ export class ClientesListComponent {
   actualizarPaginas() {
     const inicio = this.paginaActual * this.elementosPorPagina;
     const fin = inicio + this.elementosPorPagina;
-    this.clientesPaginas = this.clientes.slice(inicio, fin);
+    this.clientePaginas = this.clientes.slice(inicio, fin);
   }
 }
