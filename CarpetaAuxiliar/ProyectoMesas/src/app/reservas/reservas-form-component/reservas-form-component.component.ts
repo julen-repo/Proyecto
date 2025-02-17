@@ -37,11 +37,11 @@ export class ReservasFormComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['reservaSeleccionada'] && changes['reservaSeleccionada'].currentValue) {
-      this.idUsuario = this.reservaSeleccionada.idUsuario || 0;
-      this.idMesa = this.reservaSeleccionada.idMesa || 0;
-      this.inicio = this.reservaSeleccionada.inicio || '';
-      this.fin = this.reservaSeleccionada.fin || '';
-      this.juego = this.reservaSeleccionada.juego || '';
+      this.idUsuario = this.reservaSeleccionada.idUsuario;
+      this.idMesa = this.reservaSeleccionada.idMesa;
+      this.inicio = this.reservaSeleccionada.inicio;
+      this.fin = this.reservaSeleccionada.fin;
+      this.juego = this.reservaSeleccionada.juego;
     }
   }
 
@@ -155,15 +155,6 @@ export class ReservasFormComponent {
 
   // 3. Validar disponibilidad de la mesa en ese rango de tiempo
   validarDisponibilidad(): void {
-
-    console.log(
-      this.reservaSeleccionada.id + '\n' +
-      this.reservaSeleccionada.idMesa + '\n' +
-      this.reservaSeleccionada.idUsuario + '\n' +
-      this.reservaSeleccionada.inicio + '\n' +
-      this.reservaSeleccionada.fin + '\n' +
-      this.reservaSeleccionada.juego);
-
     this.reservasService
       .checkDisponibilidad(this.reservaSeleccionada.id, this.reservaSeleccionada.idMesa, this.reservaSeleccionada.inicio, this.reservaSeleccionada.fin)
       .subscribe({

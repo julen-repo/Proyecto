@@ -27,9 +27,23 @@ export class ReservasService {
 
   // Actualizar una reserva
   updateReserva(reserva: Reserva) {
-    console.log(JSON.stringify(reserva))
-    return this.http.post(`${this.apiUrl}updateReserva.php`, JSON.stringify(reserva));
+    // Crear la nueva variable `reservacorrecta` con los valores correctos
+    let reservacorrecta: Reserva = {
+      id: reserva.id,
+      idUsuario: reserva.idUsuario || 0,
+      idMesa: reserva.idMesa || 0,
+      inicio: reserva.inicio || '',
+      fin: reserva.fin || '',
+      juego: reserva.juego || ''
+    };
+  
+    // Imprimir la reserva correctamente formateada
+    console.log(JSON.stringify(reservacorrecta));
+  
+    // Realizar el POST con la reserva corregida
+    return this.http.post(`${this.apiUrl}updateReserva.php`, JSON.stringify(reservacorrecta));
   }
+  
 
   deleteReserva(reserva: Reserva) {
     return this.http.post(`${this.apiUrl}deleteReserva.php`, JSON.stringify(reserva));
@@ -48,7 +62,7 @@ export class ReservasService {
   // Verificar disponibilidad de la mesa en el rango de tiempo
   checkDisponibilidad(idReserva: number, idMesa: number, inicio: string, fin: string) {
     let url: string = `${this.apiUrl}/checkDisponibilidad.php?idReserva=${idReserva}&idMesa=${idMesa}&inicio=${inicio}&fin=${fin}`
-    console.log(url);
+    //console.log(url);
     return this.http.get<any>(url);
   }
 
