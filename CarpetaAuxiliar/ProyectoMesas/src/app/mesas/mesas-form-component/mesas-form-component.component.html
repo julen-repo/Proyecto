@@ -1,9 +1,28 @@
-<div class="container">
-    <h2>{{ mesaSeleccionada.id != 0 ? 'Editar Mesa' : 'Crear Mesa' }}</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">{{ mesaSeleccionada.id != 0 ? 'Editar Mesa' : 'Crear Mesa' }}
+        @if (mesaSeleccionada.id != 0){
+        <span> ID: {{mesaSeleccionada.id}}</span>
+        }
+    </h2>
+
+    <div class="row">
         <div class="form-group">
-            <label for="tamano">Tamaño</label>
-            <input id="tamano" type="number" class="form-control" min="1" [(ngModel)]="tamano">
+            <label for="tamano" class="form-label">Tamaño de la Mesa</label>
+            <input id="tamano" type="number" class="form-control" min="1" [(ngModel)]="tamano"
+                placeholder="Introduce el tamaño">
         </div>
-        <!-- Aquí puedes agregar más campos si fuera necesario -->
-        <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">{{ mesaSeleccionada.id != 0 ? 'Actualizar' : 'Crear' }}</button>
+
+        <!-- Botones de acción -->
+        <div class="mt-3 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" (click)="enviarFormulario()">
+                {{ mesaSeleccionada.id != 0 ? 'Actualizar' : 'Crear' }}
+            </button>
+
+            @if (mesaSeleccionada.id != 0){
+            <button class="btn btn-danger" (click)="borrarMesa()">
+                Borrar
+            </button>
+            }
+        </div>
+    </div>
 </div>

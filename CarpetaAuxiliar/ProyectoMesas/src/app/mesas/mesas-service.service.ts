@@ -29,4 +29,8 @@ export class MesasService {
   updateMesa(mesa:Mesa) {
     return this.http.post(`${this.apiUrl}updateMesa.php`, JSON.stringify(mesa));
   }
+
+  deleteMesa(mesa:Mesa) {
+    return this.http.post(`${this.apiUrl}deleteMesa.php`, JSON.stringify(mesa));
+  }
 }

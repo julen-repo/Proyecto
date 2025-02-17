@@ -65,4 +65,18 @@ export class MesasFormComponent {
   validarTamano(tamano: any): boolean {
     return Number.isInteger(tamano) && tamano > 0;
   }
+
+  borrarMesa(){
+    this.mesasService.deleteMesa(this.mesaSeleccionada).subscribe({
+      next: (data: any) => {
+        if (data.resultado === 'OK') {
+          alert(data.mensaje);
+          window.location.reload();
+        }
+      },
+      error: (error) => {
+        console.error('Error en la petición:', error);
+      }
+    });
+  }
 }
