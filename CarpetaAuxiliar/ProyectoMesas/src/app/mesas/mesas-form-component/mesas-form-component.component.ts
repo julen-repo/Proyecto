@@ -19,7 +19,6 @@ export class MesasFormComponent {
   
   tamano: number = 0;
 
-
   constructor(private mesasService: MesasService) { }
 
   ngOnChanges(changes: SimpleChanges): void {

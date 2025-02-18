@@ -21,6 +21,15 @@ export class ReservasListComponent {
     juego: ''
   };
 
+  reservaVacia: Reserva = {
+    id: 0,
+    idUsuario: 0,
+    idMesa: 0,
+    inicio: '',
+    fin: '',
+    juego: ''
+  };
+
   reservaSeleccionada: Reserva = {
     id: 0,
     idUsuario: 0,
@@ -51,9 +60,13 @@ export class ReservasListComponent {
   }
 
   seleccionarReserva(id: number) {
-    const reserva = this.reservas.find(r => r.id === id);
+
+    let reserva = this.reservas.find(r => r.id === id);
+
     if (reserva) {
       this.reservaSeleccionada = { ...reserva }; // Pasar una copia
+    } else {
+      this.reservaSeleccionada = this.reservaVacia;
     }
   }
 
